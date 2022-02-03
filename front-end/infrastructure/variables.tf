@@ -8,10 +8,10 @@ variable "environment" {
 
 variable "root_domain_name" {
     description = "naked domain for route53"
-    default = "thecollectorset.com"
+    default     = "thecollectorset.com"
 }
 
 variable "bucket_domain_name" {
     description = "domain name for the static website bucket"
-    default = "www.thecollectorset.com"
+    default     = "www.thecollectorset.com"
 }

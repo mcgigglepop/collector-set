@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "static_website_bucket" {
-  bucket = var.bucket_domain_name
-  acl    = "public-read"
+  bucket            = var.bucket_domain_name
+  acl               = "public-read"
 
   policy = <<POLICY
 {
@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "static_website_bucket" {
 POLICY
 
   website {
-    index_document = "index.html"
-    error_document = "404.html"
+    index_document  = "index.html"
+    error_document  = "404.html"
   }
 }
