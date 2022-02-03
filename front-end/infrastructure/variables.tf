@@ -6,6 +6,12 @@ variable "environment" {
     description = "Application deployment environment"
 }
 
-variable "domain_name" {
-    description = "domain name for the static website"
+variable "root_domain_name" {
+    description = "naked domain for route53"
+    default = "thecollectorset.com"
+}
+
+variable "bucket_domain_name" {
+    description = "domain name for the static website bucket"
+    default = "thecollectorset.com"
 }
