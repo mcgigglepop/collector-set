@@ -13,5 +13,5 @@ variable "root_domain_name" {
 
 variable "bucket_domain_name" {
     description = "domain name for the static website bucket"
-    default = "thecollectorset.com"
+    default = "www.thecollectorset.com"
 }
