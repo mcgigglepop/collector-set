@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "www" {
+resource "aws_s3_bucket" "static_website_bucket" {
   bucket = var.bucket_domain_name
   acl    = "public-read"
 
