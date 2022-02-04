@@ -42,3 +42,15 @@ Resources:
       Principal: cognito-idp.amazonaws.com
       Action: lambda:InvokeFunction
       SourceArn: !GetAtt UserPool.Arn
+
+  UsersDynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      TableName: !Sub ${AWS::StackName}-Users-Table
+      AttributeDefinitions: 
+        - AttributeName: cognito_username
+          AttributeType: S
+      KeySchema: 
+        - AttributeName: cognito_username
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
