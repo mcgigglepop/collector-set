@@ -1,4 +1,0 @@
-add wishlist
-add pending
-make collections public/private
-qr code for sharing
