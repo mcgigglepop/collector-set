@@ -3,7 +3,7 @@ data "aws_route53_zone" "zone" {
   private_zone = false
 }
 
-resource "aws_route53_record" "naked_record" {
+resource "aws_route53_record" "www" {
   for_each = {
     for dvo in aws_acm_certificate.acm_cert.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
@@ -18,4 +18,16 @@ resource "aws_route53_record" "naked_record" {
   ttl             = 60
   type            = each.value.type
   zone_id         = data.aws_route53_zone.zone.zone_id
+}
+
+resource "aws_route53_record" "record_a" {
+  zone_id = data.aws_route53_zone.zone.id
+  name    = var.root_domain_name
+  type    = "A"
+
+  alias {
+    name                   = replace(aws_cloudfront_distribution.s3_distribution.domain_name, "/[.]$/", "")
+    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
+    evaluate_target_health = true
+  }
 }
