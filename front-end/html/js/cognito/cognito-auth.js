@@ -16,4 +16,8 @@ var CognitoLogin = window.CognitoLogin || {};
         AWSCognito.config.region = _config.cognito.region;
     }
 
+    CognitoLogin.signOut = function signOut() {
+        userPool.getCurrentUser().signOut();
+    };
+
 }(jQuery));
