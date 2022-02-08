@@ -10,12 +10,15 @@ var CognitoLogin = window.CognitoLogin || {};
         ClientId: _config.cognito.userPoolClientId
     };
 
+    // instantiate user pool
     userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
+    // set region
     if (typeof AWSCognito !== 'undefined') {
         AWSCognito.config.region = _config.cognito.region;
     }
 
+    // sign out
     CognitoLogin.signOut = function signOut() {
         userPool.getCurrentUser().signOut();
     };
