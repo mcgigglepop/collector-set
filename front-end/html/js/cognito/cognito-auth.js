@@ -41,4 +41,18 @@ var CognitoLogin = window.CognitoLogin || {};
         }
     });
 
+    //-------------------------------------- FUNCTIONS --------------------------------------//
+    
+    // forgot password function
+    function forgotPassword(email) {
+        createCognitoUser(email).forgotPassword({
+            onSuccess: function(result) {
+                window.location.href = resetPassword;
+            },
+            onFailure: function(err) {
+                alert(err);
+            }
+        });
+    }
+
 }(jQuery));
