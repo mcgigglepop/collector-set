@@ -27,7 +27,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     prefix          = "cloudfront_logs"
   }
 
-  aliases = [var.root_domain_name]
+  aliases = [var.root_domain_name, "*.${var.root_domain_name}"]
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
