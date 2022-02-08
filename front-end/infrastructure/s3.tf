@@ -26,7 +26,7 @@ EOF
 
 resource "null_resource" "build" {
   provisioner "local-exec" {
-    command = "aws s3 cp ./index.html s3://${var.bucket_name} --profile management"
+    command = "aws s3 cp ../html/index.html s3://${var.bucket_name} --profile ${var.profile}"
   }
 
   depends_on = [aws_s3_bucket.front-end]
