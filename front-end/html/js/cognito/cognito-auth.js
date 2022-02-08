@@ -3,6 +3,7 @@ var CognitoLogin = window.CognitoLogin || {};
 (function scopeWrapper($) {
     // globals
     var userPool;
+    var resetPassword = 'reset-password.html'
 
     // cognito user pool data
     var poolData = {
@@ -50,6 +51,7 @@ var CognitoLogin = window.CognitoLogin || {};
                 window.location.href = resetPassword;
             },
             onFailure: function(err) {
+                // fix this
                 alert(err);
             }
         });
