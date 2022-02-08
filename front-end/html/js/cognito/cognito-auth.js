@@ -12,4 +12,8 @@ var CognitoLogin = window.CognitoLogin || {};
 
     userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
+    if (typeof AWSCognito !== 'undefined') {
+        AWSCognito.config.region = _config.cognito.region;
+    }
+
 }(jQuery));
