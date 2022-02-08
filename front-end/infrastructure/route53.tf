@@ -31,3 +31,15 @@ resource "aws_route53_record" "record_a" {
     evaluate_target_health = true
   }
 }
+
+resource "aws_route53_record" "record_a_www" {
+  zone_id = data.aws_route53_zone.zone.id
+  name    = "www.${var.root_domain_name}"
+  type    = "A"
+
+  alias {
+    name                   = replace(aws_cloudfront_distribution.s3_distribution.domain_name, "/[.]$/", "")
+    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
+    evaluate_target_health = true
+  }
+}
