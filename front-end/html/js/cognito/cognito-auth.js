@@ -42,6 +42,13 @@ var CognitoLogin = window.CognitoLogin || {};
         }
     });
 
+
+
+
+
+
+    
+
     //-------------------------------------- FUNCTIONS --------------------------------------//
     
     // forgot password function
@@ -55,6 +62,12 @@ var CognitoLogin = window.CognitoLogin || {};
                 alert(err);
             }
         });
+    }
+
+    function handleForgotPassword(event) {
+        var email = $('#forgotPasswordEmail').val();
+        event.preventDefault();
+        forgotPassword(email);
     }
 
 }(jQuery));
