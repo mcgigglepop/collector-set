@@ -51,6 +51,14 @@ var CognitoLogin = window.CognitoLogin || {};
 
 
     //-------------------------------------- FUNCTIONS --------------------------------------//
+
+    // create cognito user
+    function createCognitoUser(email) {
+        return new AmazonCognitoIdentity.CognitoUser({
+            Username: email,
+            Pool: userPool
+        });
+    }
     
     // register account
     function register(email, password, onSuccess, onFailure) {
