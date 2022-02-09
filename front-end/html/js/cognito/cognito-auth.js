@@ -71,8 +71,29 @@ var CognitoLogin = window.CognitoLogin || {};
         );
     }
 
-    
+    function handleRegister(event) {
+        var email = $('#registerEmail').val();
+        var password = $('#registerFirstPassword').val();
+        var password2 = $('#registerSecondPassword').val();
 
+        var onSuccess = function registerSuccess(result) {
+            var confirmation = ('Registration successful. Please check your email inbox or spam folder for your verification code.');
+            if (confirmation) {
+                window.location.href = 'verify.html';
+            }
+        };
+        var onFailure = function registerFailure(err) {
+            alert(err);
+        };
+        event.preventDefault();
+
+        if (password === password2) {
+            register(email, password, onSuccess, onFailure);
+        } else {
+            alert('Passwords do not match');
+        }
+    }
+    
     // forgot password
     function forgotPassword(email) {
         createCognitoUser(email).forgotPassword({
