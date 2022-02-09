@@ -43,12 +43,13 @@ var CognitoLogin = window.CognitoLogin || {};
         }
     });
 
-
-
-
-
-
-
+    $(function onDocReady() {
+        $('#signinForm').submit(handleSignin);
+        $('#registrationForm').submit(handleRegister);
+        $('#verifyForm').submit(handleVerify);
+        $('#forgotPasswordForm').submit(handleForgotPassword);
+        $('#resetPasswordForm').submit(handleResetPassword);
+    });
 
     //-------------------------------------- FUNCTIONS --------------------------------------//
 
