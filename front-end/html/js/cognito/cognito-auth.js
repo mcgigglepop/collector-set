@@ -105,6 +105,21 @@ var CognitoLogin = window.CognitoLogin || {};
         });
     }
 
+    function handleVerify(event) {
+        var email = $('#verifyEmail').val();
+        var code = $('#verifyCode').val();
+        event.preventDefault();
+        verify(email, code,
+            function verifySuccess(result) {
+                alert('Verification successful. You will now be redirected to the login page.');
+                window.location.href = signinUrl;
+            },
+            function verifyError(err) {
+                alert(err);
+            }
+        );
+    }
+
     // forgot password
     function forgotPassword(email) {
         createCognitoUser(email).forgotPassword({
