@@ -4,4 +4,4 @@ make collections public/private
 qr code for sharing
 add header, footer for login, register pages
 add login with social media
-fix this items
+fail nicely on UI login flow
