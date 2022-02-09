@@ -4,6 +4,7 @@ var CognitoLogin = window.CognitoLogin || {};
     // globals
     var userPool;
     var resetPassword = 'reset-password.html'
+    var signinUrl = 'login.html';
 
     // cognito user pool data
     var poolData = {
@@ -47,11 +48,11 @@ var CognitoLogin = window.CognitoLogin || {};
 
 
 
-    
+
 
     //-------------------------------------- FUNCTIONS --------------------------------------//
     
-    // forgot password function
+    // forgot password
     function forgotPassword(email) {
         createCognitoUser(email).forgotPassword({
             onSuccess: function(result) {
@@ -68,6 +69,18 @@ var CognitoLogin = window.CognitoLogin || {};
         var email = $('#forgotPasswordEmail').val();
         event.preventDefault();
         forgotPassword(email);
+    }
+
+    // reset password
+    function resetPasswordfunction(email, code, password) {
+        createCognitoUser(email).confirmPassword(code, password, {
+            onFailure(err) {
+                alert(err);
+            },
+            onSuccess() {
+                window.location.href = signinUrl;
+            },
+        });
     }
 
 }(jQuery));
