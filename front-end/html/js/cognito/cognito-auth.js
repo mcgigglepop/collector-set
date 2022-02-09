@@ -52,6 +52,27 @@ var CognitoLogin = window.CognitoLogin || {};
 
     //-------------------------------------- FUNCTIONS --------------------------------------//
     
+    // register account
+    function register(email, password, onSuccess, onFailure) {
+        var dataEmail = {
+            Name: 'email',
+            Value: email
+        };
+        var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+
+        userPool.signUp(email, password, [attributeEmail], null,
+            function signUpCallback(err, result) {
+                if (!err) {
+                    onSuccess(result);
+                } else {
+                    onFailure(err);
+                }
+            }
+        );
+    }
+
+    
+
     // forgot password
     function forgotPassword(email) {
         createCognitoUser(email).forgotPassword({
