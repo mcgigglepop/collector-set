@@ -93,7 +93,18 @@ var CognitoLogin = window.CognitoLogin || {};
             alert('Passwords do not match');
         }
     }
-    
+
+    // verify
+    function verify(email, code, onSuccess, onFailure) {
+        createCognitoUser(email).confirmRegistration(code, true, function confirmCallback(err, result) {
+            if (!err) {
+                onSuccess(result);
+            } else {
+                onFailure(err);
+            }
+        });
+    }
+
     // forgot password
     function forgotPassword(email) {
         createCognitoUser(email).forgotPassword({
