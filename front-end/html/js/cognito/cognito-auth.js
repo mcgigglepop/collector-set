@@ -128,6 +128,20 @@ var CognitoLogin = window.CognitoLogin || {};
         );
     }
 
+    // sign in 
+    function signin(email, password, onSuccess, onFailure) {
+        var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
+            Username: email,
+            Password: password
+        });
+
+        var cognitoUser = createCognitoUser(email);
+        cognitoUser.authenticateUser(authenticationDetails, {
+            onSuccess: onSuccess,
+            onFailure: onFailure
+        });
+    }
+
     // forgot password
     function forgotPassword(email) {
         createCognitoUser(email).forgotPassword({
