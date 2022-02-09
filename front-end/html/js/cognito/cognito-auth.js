@@ -142,6 +142,20 @@ var CognitoLogin = window.CognitoLogin || {};
         });
     }
 
+    function handleSignin(event) {
+        var email = $('#loginEmail').val();
+        var password = $('#loginPassword').val();
+        event.preventDefault();
+        signin(email, password,
+            function signinSuccess() {
+                window.location.href = 'core/dashboard.html';
+            },
+            function signinError(err) {
+                alert(err);
+            }
+        );
+    }
+
     // forgot password
     function forgotPassword(email) {
         createCognitoUser(email).forgotPassword({
