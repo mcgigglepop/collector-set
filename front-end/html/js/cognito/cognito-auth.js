@@ -151,4 +151,13 @@ var CognitoLogin = window.CognitoLogin || {};
         });
     }
 
+    function handleResetPassword(event) {
+        var email = $('#verifyResetEmail').val();
+        var code = $('#verifyResetCode').val();
+        var password = $('#verifyResetPassword').val();
+
+        event.preventDefault();
+        resetPasswordfunction(email, code, password);
+    }
+
 }(jQuery));
